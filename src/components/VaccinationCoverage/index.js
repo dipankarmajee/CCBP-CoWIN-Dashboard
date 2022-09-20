@@ -1,11 +1,4 @@
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  Legend,
-  ResponsiveContainer,
-} from 'recharts'
+import {BarChart, Bar, XAxis, YAxis, Legend} from 'recharts'
 
 import './index.css'
 
@@ -21,50 +14,43 @@ const VaccinationCoverage = props => {
   return (
     <div>
       <h3 className="title">Vaccination Coverage</h3>
-      <ResponsiveContainer width="100%" height={600}>
-        <BarChart
-          data={last7DaysVaccination}
-          margin={{
-            top: 100,
-            bottom: 100,
-          }}
-        >
-          <XAxis
-            dataKey="vaccineDate"
-            tick={{
-              stroke: 'gray',
-              strokeWidth: 1,
-            }}
-          />
-          <YAxis
-            tickFormatter={DataFormatter}
-            tick={{
-              stroke: 'gray',
-              strokeWidth: 0,
-            }}
-          />
-          <Legend
-            wrapperStyle={{
-              padding: 30,
-            }}
-          />
 
-          <Bar
-            dataKey="dose2"
-            name="Dose 1"
-            fill="#2d87bb"
-            barSize="20%"
-            radius={[10, 10, 0, 0]}
-          />
-          <Bar
-            dataKey="dose1"
-            name="Dose 2"
-            fill="#f54394"
-            barSize="20%"
-            radius={[10, 10, 0, 0]}
-          />
-        </BarChart>
-      </ResponsiveContainer>
+      <BarChart width={1000} height={300} data={last7DaysVaccination}>
+        <XAxis
+          dataKey="vaccineDate"
+          tick={{
+            stroke: 'gray',
+            strokeWidth: 1,
+          }}
+        />
+        <YAxis
+          tickFormatter={DataFormatter}
+          tick={{
+            stroke: 'gray',
+            strokeWidth: 0,
+          }}
+        />
+        <Legend
+          wrapperStyle={{
+            padding: 30,
+          }}
+        />
+
+        <Bar
+          dataKey="dose2"
+          name="Dose 1"
+          fill="#2d87bb"
+          barSize="20%"
+          radius={[10, 10, 0, 0]}
+        />
+        <Bar
+          dataKey="dose1"
+          name="Dose 2"
+          fill="#f54394"
+          barSize="20%"
+          radius={[10, 10, 0, 0]}
+        />
+      </BarChart>
     </div>
   )
 }
